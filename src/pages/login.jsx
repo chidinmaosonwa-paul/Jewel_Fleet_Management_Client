@@ -3,6 +3,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../api/axiosInstance';
 
+console.log('Login component loaded');
+console.log('axiosInstance:', axiosInstance);
+
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();

@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-card h1 {
+  font-size: 1.2rem;
+  color: #4361ee;
+  margin-bottom: 0.3rem;
+}
+
+.auth-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #4361ee;
+}
+
+button[type='submit'] {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #4361ee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+button[type='submit']:hover {
+  background-color: #3451d1;
+}
+
+button[type='submit']:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.error {
+  background-color: #fff5f5;
+  color: #c1121f;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+p {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+p a {
+  color: #4361ee;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+p a:hover {
+  text-decoration: underline;
+}

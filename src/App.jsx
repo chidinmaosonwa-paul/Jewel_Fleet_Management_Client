@@ -1,10 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import Login from './pages/Login.jsx';
-import Register from './pages/Register.jsx';
 import AdminDashboard from './pages/admin/Dashboard.jsx';
-import UserDashboard from './pages/user/Dashboard.jsx';
-import DriverDashboard from './pages/driver/Dashboard.jsx';
 
 const ProtectedRoute = ({ children, role }) => {
   const { token, user } = useAuth();
@@ -18,28 +15,11 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
       <Route
         path="/admin/*"
         element={
           <ProtectedRoute role="admin">
             <AdminDashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/user/*"
-        element={
-          <ProtectedRoute role="user">
-            <UserDashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/driver/*"
-        element={
-          <ProtectedRoute role="driver">
-            <DriverDashboard />
           </ProtectedRoute>
         }
       />
