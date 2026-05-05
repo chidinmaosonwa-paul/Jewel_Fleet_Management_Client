@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import axiosInstance from '../api/axiosInstance';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import axiosInstance from "../api/axiosInstance";
 
-console.log('Login component loaded');
-console.log('axiosInstance:', axiosInstance);
+console.log("Login component loaded");
+console.log("axiosInstance:", axiosInstance);
 
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -20,17 +20,22 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
     try {
-      const res = await axiosInstance.post('/auth/login', formData);
+      const res = await axiosInstance.post("/auth/login", formData);
       const { token } = res.data;
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      login(token, { role: payload.role, userId: payload.userId });
-      if (payload.role === 'admin') navigate('/admin');
-      else if (payload.role === 'driver') navigate('/driver');
-      else navigate('/user');
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      login(token, {
+        role: payload.role,
+        userId: payload.userId,
+        firstName: payload.firstName,
+        lastName: payload.lastName,
+      });
+      if (payload.role === "admin") navigate("/admin");
+      else if (payload.role === "driver") navigate("/driver");
+      else navigate("/user");
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -66,10 +71,12 @@ const Login = () => {
             />
           </div>
           <button type="submit" disabled={loading}>
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
-        <p>Don't have an account? <Link to="/register">Register</Link></p>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </div>
     </div>
   );

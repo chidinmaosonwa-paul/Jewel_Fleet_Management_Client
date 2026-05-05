@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
 import AdminDashboard from './pages/admin/Dashboard.jsx';
 
 const ProtectedRoute = ({ children, role }) => {
@@ -15,6 +16,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route
         path="/admin/*"
         element={
