@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import Vehicles from './vehicles.jsx';
 import Destinations from './Destinations.jsx';
 import Journeys from './Journeys.jsx';
+import Tickets from './Tickets.jsx';
+import Reports from './Reports.jsx';
+import Financial from './Financial.jsx';
 
 const AdminDashboard = () => {
   const { user, logout } = useAuth();
@@ -57,9 +60,9 @@ const AdminDashboard = () => {
         {activePage === 'vehicles' && <Vehicles />}
         {activePage === 'destinations' && <Destinations />}
         {activePage === 'journeys' && <Journeys />}
-        {activePage === 'tickets' && <p>Tickets section coming soon.</p>}
-        {activePage === 'reports' && <p>Reports section coming soon.</p>}
-        {activePage === 'financial' && <p>Financial section coming soon.</p>}
+        {activePage === 'tickets' && <Tickets />}
+        {activePage === 'reports' && <Reports />}
+        {activePage === 'financial' && <Financial />}
       </main>
     </div>
   );

@@ -333,3 +333,30 @@ nav {
   font-size: 0.85rem;
   cursor: pointer;
 }
+
+.report-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.summary-card {
+  background-color: #f8f9ff;
+  border: 1px solid #e0e4ff;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.summary-card p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0 0 0.3rem 0;
+  text-align: center;
+}
+
+.summary-card h3 {
+  font-size: 1.4rem;
+  color: #1a1a2e;
+}
