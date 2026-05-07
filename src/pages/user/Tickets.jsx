@@ -5,9 +5,11 @@ const Tickets = () => {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const fetchTickets = async () => {
     setError("");
+    setSuccess("");
     try {
       const res = await axiosInstance.get("/tickets");
       setTickets(res.data);
@@ -24,8 +26,11 @@ const Tickets = () => {
 
   const handleCancel = async (id) => {
     if (!window.confirm("Are you sure you want to cancel this ticket?")) return;
+    setError("");
+    setSuccess("");
     try {
       await axiosInstance.put(`/tickets/${id}/cancel`);
+      setSuccess("Ticket cancelled successfully. A refund has been initiated.");
       fetchTickets();
     } catch (err) {
       setError(err.response?.data?.message || "Failed to cancel ticket");
@@ -38,40 +43,41 @@ const Tickets = () => {
       timeStyle: "short",
     });
 
-  if (loading) return <p>Loading tickets...</p>;
+  if (loading) return <p>Loading your tickets...</p>;
 
   return (
     <div>
       <div className="page-header">
-        <h1>Tickets</h1>
+        <h1>My Tickets</h1>
       </div>
 
       {error && <p className="error">{error}</p>}
+      {success && <p className="success">{success}</p>}
 
       {tickets.length === 0 ? (
-        <p>No tickets found.</p>
+        <p>You have no tickets yet. Book a journey to get started.</p>
       ) : (
         <table className="data-table">
           <thead>
             <tr>
-              <th>Passenger</th>
-              <th>Email</th>
               <th>Destination</th>
+              <th>Departure</th>
               <th>Seat No.</th>
               <th>Price</th>
               <th>Booked On</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {tickets.map((ticket) => (
               <tr key={ticket._id}>
-                <td>
-                  {ticket.userId?.firstName} {ticket.userId?.lastName}
-                </td>
-                <td>{ticket.userId?.email}</td>
                 <td>{ticket.journeyId?.destinationId?.name ?? "—"}</td>
+                <td>
+                  {ticket.journeyId?.departureTime
+                    ? formatDate(ticket.journeyId.departureTime)
+                    : "—"}
+                </td>
                 <td>{ticket.seatNumber}</td>
                 <td>₦{ticket.price.toLocaleString()}</td>
                 <td>{formatDate(ticket.createdAt)}</td>

@@ -360,3 +360,12 @@ nav {
   font-size: 1.4rem;
   color: #1a1a2e;
 }
+
+.success {
+  background-color: #d8f3dc;
+  color: #2d6a4f;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}

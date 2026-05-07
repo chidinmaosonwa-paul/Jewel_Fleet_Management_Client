@@ -1,17 +1,13 @@
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import Vehicles from './Vehicles.jsx';
-import Destinations from './Destinations.jsx';
 import Journeys from './Journeys.jsx';
 import Tickets from './Tickets.jsx';
-import Reports from './Reports.jsx';
-import Financial from './Financial.jsx';
 
-const AdminDashboard = () => {
+const UserDashboard = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [activePage, setActivePage] = useState('overview');
+  const [activePage, setActivePage] = useState('journeys');
 
   const handleLogout = () => {
     logout();
@@ -19,13 +15,8 @@ const AdminDashboard = () => {
   };
 
   const menuItems = [
-    { key: 'overview', label: 'Overview' },
-    { key: 'vehicles', label: 'Vehicles' },
-    { key: 'destinations', label: 'Destinations' },
-    { key: 'journeys', label: 'Journeys' },
-    { key: 'tickets', label: 'Tickets' },
-    { key: 'reports', label: 'Reports' },
-    { key: 'financial', label: 'Financial' },
+    { key: 'journeys', label: 'Available Journeys' },
+    { key: 'tickets', label: 'My Tickets' },
   ];
 
   return (
@@ -51,21 +42,11 @@ const AdminDashboard = () => {
         </button>
       </aside>
       <main className="main-content">
-        {activePage === 'overview' && (
-          <div>
-            <h1>Overview</h1>
-            <p>Select a section from the sidebar to get started.</p>
-          </div>
-        )}
-        {activePage === 'vehicles' && <Vehicles />}
-        {activePage === 'destinations' && <Destinations />}
         {activePage === 'journeys' && <Journeys />}
         {activePage === 'tickets' && <Tickets />}
-        {activePage === 'reports' && <Reports />}
-        {activePage === 'financial' && <Financial />}
       </main>
     </div>
   );
 };
 
-export default AdminDashboard;
+export default UserDashboard;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../api/axiosInstance';
 
-const vehicles = () => {
+const Vehicles = () => {
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -15,10 +15,11 @@ const vehicles = () => {
   const [editId, setEditId] = useState(null);
 
   const fetchVehicles = async () => {
+    setError("");
     try {
       const res = await axiosInstance.get('/fleet');
       setVehicles(res.data);
-    } catch (err) {
+    } catch {
       setError('Failed to load vehicles');
     } finally {
       setLoading(false);
@@ -154,4 +155,4 @@ const vehicles = () => {
   );
 };
 
-export default vehicles;
+export default Vehicles;
