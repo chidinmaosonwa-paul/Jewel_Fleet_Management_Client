@@ -7,6 +7,7 @@ import Journeys from './Journeys.jsx';
 import Tickets from './Tickets.jsx';
 import Reports from './Reports.jsx';
 import Financial from './Financial.jsx';
+import Drivers from './Drivers.jsx';
 
 const AdminDashboard = () => {
   const { user, logout } = useAuth();
@@ -19,6 +20,7 @@ const AdminDashboard = () => {
   };
 
   const menuItems = [
+    { key: 'drivers', label: 'Drivers' },
     { key: 'overview', label: 'Overview' },
     { key: 'vehicles', label: 'Vehicles' },
     { key: 'destinations', label: 'Destinations' },
@@ -57,6 +59,7 @@ const AdminDashboard = () => {
             <p>Select a section from the sidebar to get started.</p>
           </div>
         )}
+        {activePage === 'drivers' && <Drivers />}
         {activePage === 'vehicles' && <Vehicles />}
         {activePage === 'destinations' && <Destinations />}
         {activePage === 'journeys' && <Journeys />}

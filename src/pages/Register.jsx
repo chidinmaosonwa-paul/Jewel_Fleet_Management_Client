@@ -11,7 +11,6 @@ const Register = () => {
     phone: '',
     password: '',
     confirmPassword: '',
-    role: 'user',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -68,13 +67,6 @@ const Register = () => {
           <div className="form-group">
             <label>Confirm Password</label>
             <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm your password" required />
-          </div>
-          <div className="form-group">
-            <label>Role</label>
-            <select name="role" value={formData.role} onChange={handleChange}>
-              <option value="user">User</option>
-              <option value="driver">Driver</option>
-            </select>
           </div>
           <button type="submit" disabled={loading}>
             {loading ? 'Creating account...' : 'Register'}
