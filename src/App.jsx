@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
-import AdminDashboard from "./pages/admin/dashboard.jsx";
+import AdminDashboard from "./pages/admin/Dashboard.jsx";
 import UserDashboard from "./pages/user/Dashboard.jsx";
 import DriverDashboard from "./pages/driver/Dashboard.jsx";
 import NotFound from "./pages/NotFound.jsx";
