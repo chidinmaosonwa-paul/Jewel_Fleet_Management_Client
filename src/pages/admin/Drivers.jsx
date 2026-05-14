@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axiosInstance from "../../api/axiosInstance";
+import { useState, useEffect } from 'react';
 
 const Drivers = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,18 @@ const Drivers = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+  const [drivers, setDrivers] = useState([]);
+
+   const fetchDrivers = async () => {
+    try {
+      const res = await axiosInstance.get('/auth/drivers');
+      setDrivers(res.data);
+    } catch {
+      setError('Failed to load drivers');
+    }
+  };
+
+  useEffect(() => { fetchDrivers(); }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -133,6 +146,31 @@ const Drivers = () => {
           </button>
         </form>
       </div>
+
+       {drivers.length === 0 ? (
+        <p style={{ marginTop: '1.5rem' }}>No drivers found.</p>
+      ) : (
+        <table className="data-table" style={{ marginTop: '1.5rem' }}>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {drivers.map((driver) => (
+              <tr key={driver._id}>
+                <td>{driver.firstName}</td>
+                <td>{driver.lastName}</td>
+                <td>{driver.email}</td>
+                <td>{driver.phone}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
