@@ -9,6 +9,8 @@ import Reports from './Reports.jsx';
 import Financial from './Financial.jsx';
 import Drivers from './Drivers.jsx';
 import Overview from './Overview.jsx';
+import Users from './Users.jsx';
+
 
 const AdminDashboard = () => {
   const { user, logout } = useAuth();
@@ -29,6 +31,8 @@ const AdminDashboard = () => {
     { key: 'tickets', label: 'Tickets' },
     { key: 'reports', label: 'Reports' },
     { key: 'financial', label: 'Financial' },
+    { key: 'users', label: 'Users' },
+    
   ];
 
   return (
@@ -62,6 +66,7 @@ const AdminDashboard = () => {
         {activePage === 'tickets' && <Tickets />}
         {activePage === 'reports' && <Reports />}
         {activePage === 'financial' && <Financial />}
+        {activePage === 'users' && <Users />}
       </main>
     </div>
   );

@@ -5,7 +5,8 @@ import Register from "./pages/Register.jsx";
 import AdminDashboard from "./pages/admin/dashboard.jsx";
 import UserDashboard from "./pages/user/Dashboard.jsx";
 import DriverDashboard from "./pages/driver/Dashboard.jsx";
-import NotFound from './pages/NotFound.jsx';
+import NotFound from "./pages/NotFound.jsx";
+import Landing from "./pages/Landing.jsx";
 
 const ProtectedRoute = ({ children, role }) => {
   const { token, user } = useAuth();
@@ -17,7 +18,7 @@ const ProtectedRoute = ({ children, role }) => {
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
