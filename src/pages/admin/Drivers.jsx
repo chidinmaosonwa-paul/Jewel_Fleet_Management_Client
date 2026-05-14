@@ -125,8 +125,6 @@ const Drivers = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter password"
-              pattern="[0-9+\-\s]+"
-              title="Phone number can only contain digits, +, - and spaces"
               required
             />
           </div>
