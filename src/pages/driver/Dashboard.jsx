@@ -1,21 +1,21 @@
-import { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import Reports from './Reports.jsx';
+import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from '../../context/ThemeContext';
+import Reports from "./Reports.jsx";
 
 const DriverDashboard = () => {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
-  const [activePage, setActivePage] = useState('reports');
+  const [activePage, setActivePage] = useState("reports");
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate("/login");
   };
 
-  const menuItems = [
-    { key: 'reports', label: 'My Reports' },
-  ];
+  const menuItems = [{ key: "reports", label: "My Reports" }];
 
   return (
     <div className="dashboard">
@@ -28,19 +28,22 @@ const DriverDashboard = () => {
           {menuItems.map((item) => (
             <button
               key={item.key}
-              className={`nav-item ${activePage === item.key ? 'active' : ''}`}
+              className={`nav-item ${activePage === item.key ? "active" : ""}`}
               onClick={() => setActivePage(item.key)}
             >
               {item.label}
             </button>
           ))}
         </nav>
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {theme === "dark" ? "Light Mode" : "Dark Mode"}
+        </button>
         <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>
       </aside>
       <main className="main-content">
-        {activePage === 'reports' && <Reports />}
+        {activePage === "reports" && <Reports />}
       </main>
     </div>
   );

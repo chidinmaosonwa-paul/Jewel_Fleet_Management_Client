@@ -1,3 +1,69 @@
+/* ── CSS Variables ────────────────────────────────────────────────────────── */
+:root[data-theme="dark"] {
+  --bg-primary: #0a0f2c;
+  --bg-secondary: #0d1240;
+  --bg-card: #131b4d;
+  --bg-sidebar: #080d24;
+  --bg-hover: #1a2560;
+  --bg-input: #0d1240;
+  --bg-table-header: #080d24;
+  --bg-table-row: #131b4d;
+  --bg-table-row-hover: #1a2560;
+  --bg-table-row-alt: #0f1638;
+
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  --text-muted: #6b7db3;
+
+  --accent: #1e88e5;
+  --accent-hover: #1565c0;
+  --accent-light: rgba(30, 136, 229, 0.15);
+
+  --border: #1e2d6b;
+  --border-light: #1a2560;
+
+  --success-bg: rgba(45, 106, 79, 0.2);
+  --success-text: #4ade80;
+  --error-bg: rgba(193, 18, 31, 0.2);
+  --error-text: #f87171;
+
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="light"] {
+  --bg-primary: #f0f2f5;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-sidebar: #1a1a2e;
+  --bg-hover: #f8f9ff;
+  --bg-input: #ffffff;
+  --bg-table-header: #1a1a2e;
+  --bg-table-row: #ffffff;
+  --bg-table-row-hover: #f8f9ff;
+  --bg-table-row-alt: #f8f9ff;
+
+  --text-primary: #1a1a2e;
+  --text-secondary: #555555;
+  --text-muted: #a0aec0;
+
+  --accent: #4361ee;
+  --accent-hover: #3451d1;
+  --accent-light: rgba(67, 97, 238, 0.1);
+
+  --border: #e2e8f0;
+  --border-light: #f0f2f5;
+
+  --success-bg: #d8f3dc;
+  --success-text: #2d6a4f;
+  --error-bg: #fff5f5;
+  --error-text: #c1121f;
+
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
 * {
   margin: 0;
   padding: 0;
@@ -5,38 +71,48 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
-  color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
+/* ── Auth ─────────────────────────────────────────────────────────────────── */
 .auth-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--bg-primary);
 }
 
 .auth-card {
-  background: white;
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   width: 100%;
   max-width: 420px;
+  overflow-y: auto;
+  max-height: 90vh;
+  border: 1px solid var(--border);
 }
 
 .auth-card h1 {
   font-size: 1.2rem;
-  color: #4361ee;
+  color: var(--accent);
   margin-bottom: 0.3rem;
 }
 
 .auth-card h2 {
   font-size: 1.6rem;
   margin-bottom: 1.5rem;
+  color: var(--text-primary);
 }
 
+/* ── Forms ────────────────────────────────────────────────────────────────── */
 .form-group {
   margin-bottom: 1.2rem;
 }
@@ -46,28 +122,37 @@ body {
   margin-bottom: 0.4rem;
   font-size: 0.9rem;
   font-weight: 500;
+  color: var(--text-secondary);
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
   padding: 0.7rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 0.95rem;
   outline: none;
   transition: border 0.2s;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
 }
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #4361ee;
+  border-color: var(--accent);
 }
 
-button[type='submit'] {
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+button[type="submit"] {
   width: 100%;
   padding: 0.8rem;
-  background-color: #4361ee;
+  background-color: var(--accent);
   color: white;
   border: none;
   border-radius: 8px;
@@ -78,32 +163,24 @@ button[type='submit'] {
   transition: background 0.2s;
 }
 
-button[type='submit']:hover {
-  background-color: #3451d1;
+button[type="submit"]:hover {
+  background-color: var(--accent-hover);
 }
 
-button[type='submit']:disabled {
+button[type="submit"]:disabled {
   background-color: #a0aec0;
   cursor: not-allowed;
-}
-
-.error {
-  background-color: #fff5f5;
-  color: #c1121f;
-  padding: 0.7rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
 }
 
 p {
   margin-top: 1.2rem;
   font-size: 0.9rem;
   text-align: center;
+  color: var(--text-secondary);
 }
 
 p a {
-  color: #4361ee;
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
 }
@@ -112,25 +189,42 @@ p a:hover {
   text-decoration: underline;
 }
 
-.auth-card {
-  overflow-y: auto;
-  max-height: 90vh;
+/* ── Feedback ─────────────────────────────────────────────────────────────── */
+.error {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
 }
 
+.success {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ── Dashboard ────────────────────────────────────────────────────────────── */
 .dashboard {
   display: flex;
   min-height: 100vh;
+  background-color: var(--bg-primary);
 }
 
 .sidebar {
   width: 250px;
-  background-color: #1a1a2e;
+  background-color: var(--bg-sidebar);
   color: white;
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1rem;
   position: fixed;
   height: 100vh;
+  border-right: 1px solid var(--border);
 }
 
 .sidebar-header {
@@ -139,7 +233,7 @@ p a:hover {
 
 .sidebar-header h2 {
   font-size: 1.1rem;
-  color: #4361ee;
+  color: var(--accent);
   margin-bottom: 0.3rem;
 }
 
@@ -153,7 +247,7 @@ p a:hover {
 nav {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.3rem;
   flex: 1;
 }
 
@@ -170,12 +264,12 @@ nav {
 }
 
 .nav-item:hover {
-  background-color: #2d2d4e;
+  background-color: var(--bg-hover);
   color: white;
 }
 
 .nav-item.active {
-  background-color: #4361ee;
+  background-color: var(--accent);
   color: white;
 }
 
@@ -189,6 +283,7 @@ nav {
   font-size: 0.9rem;
   text-align: left;
   transition: all 0.2s;
+  margin-top: 1rem;
 }
 
 .logout-btn:hover {
@@ -196,18 +291,39 @@ nav {
   color: white;
 }
 
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: #a0aec0;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-align: left;
+  transition: all 0.2s;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.theme-toggle:hover {
+  background-color: var(--bg-hover);
+  color: white;
+}
+
 .main-content {
   margin-left: 250px;
   padding: 2rem;
   flex: 1;
+  background-color: var(--bg-primary);
 }
 
 .main-content h1 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #1a1a2e;
+  color: var(--text-primary);
 }
 
+/* ── Page Header ──────────────────────────────────────────────────────────── */
 .page-header {
   display: flex;
   justify-content: space-between;
@@ -215,8 +331,9 @@ nav {
   margin-bottom: 1.5rem;
 }
 
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
 .btn-primary {
-  background-color: #4361ee;
+  background-color: var(--accent);
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -228,85 +345,33 @@ nav {
 }
 
 .btn-primary:hover {
-  background-color: #3451d1;
+  background-color: var(--accent-hover);
 }
 
-.card-form {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  margin-bottom: 1.5rem;
+.btn-large {
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
 }
 
-.card-form h2 {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  color: #1a1a2e;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-
-.data-table th {
-  background-color: #1a1a2e;
-  color: white;
-  padding: 0.9rem 1rem;
-  text-align: left;
-  font-size: 0.85rem;
-}
-
-.data-table td {
-  padding: 0.9rem 1rem;
-  border-bottom: 1px solid #f0f2f5;
-  font-size: 0.9rem;
-}
-
-.data-table tr:last-child td {
-  border-bottom: none;
-}
-
-.data-table tr:hover td {
-  background-color: #f8f9ff;
-}
-
-.badge {
-  padding: 0.3rem 0.7rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
+.btn-outline {
+  background: none;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: 600;
-  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.badge-active {
-  background-color: #d8f3dc;
-  color: #2d6a4f;
-}
-
-.badge-in_maintenance {
-  background-color: #fff3cd;
-  color: #856404;
-}
-
-.badge-retired {
-  background-color: #f8d7da;
-  color: #842029;
+.btn-outline:hover {
+  background-color: var(--accent);
+  color: white;
 }
 
 .btn-edit {
-  background-color: #4361ee;
+  background-color: var(--accent);
   color: white;
   border: none;
   padding: 0.4rem 0.8rem;
@@ -314,6 +379,11 @@ nav {
   cursor: pointer;
   font-size: 0.8rem;
   margin-right: 0.5rem;
+  transition: background 0.2s;
+}
+
+.btn-edit:hover {
+  background-color: var(--accent-hover);
 }
 
 .btn-delete {
@@ -324,16 +394,155 @@ nav {
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.8rem;
+  transition: background 0.2s;
 }
 
+.btn-delete:hover {
+  background-color: #a00f1a;
+}
+
+/* ── Cards & Forms ────────────────────────────────────────────────────────── */
+.card-form {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.card-form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+/* ── Tables ───────────────────────────────────────────────────────────────── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+.data-table th {
+  background-color: var(--bg-table-header);
+  color: white;
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.data-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover td {
+  background-color: var(--bg-table-row-hover);
+}
+
+/* ── Badges ───────────────────────────────────────────────────────────────── */
+.badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge-active {
+  background-color: rgba(45, 106, 79, 0.2);
+  color: #4ade80;
+}
+
+.badge-in_maintenance {
+  background-color: rgba(133, 100, 4, 0.2);
+  color: #fbbf24;
+}
+
+.badge-retired {
+  background-color: rgba(193, 18, 31, 0.2);
+  color: #f87171;
+}
+
+.badge-booked {
+  background-color: rgba(45, 106, 79, 0.2);
+  color: #4ade80;
+}
+
+.badge-cancelled {
+  background-color: rgba(193, 18, 31, 0.2);
+  color: #f87171;
+}
+
+/* ── Select ───────────────────────────────────────────────────────────────── */
 .status-select {
   padding: 0.3rem 0.5rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 0.85rem;
   cursor: pointer;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
 }
 
+/* ── Overview ─────────────────────────────────────────────────────────────── */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.overview-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+}
+
+.overview-card.green {
+  border-left-color: #4ade80;
+}
+
+.overview-card.red {
+  border-left-color: #f87171;
+}
+
+.overview-card.blue {
+  border-left-color: var(--accent);
+}
+
+.overview-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+}
+
+.overview-card h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin: 0 0 0.3rem 0;
+}
+
+.overview-card span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ── Financial Report ─────────────────────────────────────────────────────── */
 .report-summary {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -342,8 +551,8 @@ nav {
 }
 
 .summary-card {
-  background-color: #f8f9ff;
-  border: 1px solid #e0e4ff;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
@@ -351,73 +560,20 @@ nav {
 
 .summary-card p {
   font-size: 0.85rem;
-  color: #555;
+  color: var(--text-secondary);
   margin: 0 0 0.3rem 0;
   text-align: center;
 }
 
 .summary-card h3 {
   font-size: 1.4rem;
-  color: #1a1a2e;
+  color: var(--text-primary);
 }
 
-.success {
-  background-color: #d8f3dc;
-  color: #2d6a4f;
-  padding: 0.7rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.overview-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.overview-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  border-left: 4px solid #4361ee;
-}
-
-.overview-card.green {
-  border-left-color: #2d6a4f;
-}
-
-.overview-card.red {
-  border-left-color: #c1121f;
-}
-
-.overview-card.blue {
-  border-left-color: #4361ee;
-}
-
-.overview-card p {
-  font-size: 0.85rem;
-  color: #555;
-  margin: 0 0 0.5rem 0;
-  text-align: left;
-}
-
-.overview-card h2 {
-  font-size: 2rem;
-  color: #1a1a2e;
-  margin: 0 0 0.3rem 0;
-}
-
-.overview-card span {
-  font-size: 0.8rem;
-  color: #a0aec0;
-}
-
-/* Landing Page */
+/* ── Landing Page ─────────────────────────────────────────────────────────── */
 .landing {
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: var(--bg-secondary);
 }
 
 .landing-nav {
@@ -425,16 +581,16 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 4rem;
-  border-bottom: 1px solid #f0f2f5;
+  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  background: white;
+  background: var(--bg-secondary);
   z-index: 100;
 }
 
 .landing-logo {
   font-size: 1.4rem;
-  color: #4361ee;
+  color: var(--accent);
   font-weight: 700;
 }
 
@@ -447,14 +603,14 @@ nav {
 .landing-nav-links button:first-child {
   background: none;
   border: none;
-  color: #333;
+  color: var(--text-primary);
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 500;
 }
 
 .landing-nav-links button:first-child:hover {
-  color: #4361ee;
+  color: var(--accent);
 }
 
 .hero {
@@ -462,7 +618,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 5rem 4rem;
-  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+  background: var(--bg-primary);
   gap: 3rem;
 }
 
@@ -473,14 +629,14 @@ nav {
 
 .hero-content h1 {
   font-size: 3rem;
-  color: #1a1a2e;
+  color: var(--text-primary);
   line-height: 1.2;
   margin-bottom: 1.2rem;
 }
 
 .hero-content p {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 2rem;
   text-align: left;
@@ -492,28 +648,6 @@ nav {
   gap: 1rem;
 }
 
-.btn-large {
-  padding: 0.9rem 2rem;
-  font-size: 1rem;
-}
-
-.btn-outline {
-  background: none;
-  border: 2px solid #4361ee;
-  color: #4361ee;
-  padding: 0.9rem 2rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.btn-outline:hover {
-  background-color: #4361ee;
-  color: white;
-}
-
 .hero-visual {
   flex: 1;
   display: flex;
@@ -523,16 +657,18 @@ nav {
 }
 
 .hero-card {
-  background: white;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(67, 97, 238, 0.1);
-  border-left: 4px solid #4361ee;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
 }
 
 .hero-card-label {
   font-size: 0.8rem;
-  color: #a0aec0;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0 0 0.5rem 0;
@@ -541,13 +677,13 @@ nav {
 
 .hero-card h2 {
   font-size: 2rem;
-  color: #1a1a2e;
+  color: var(--text-primary);
   margin: 0 0 0.3rem 0;
 }
 
 .hero-card-sub {
   font-size: 0.85rem;
-  color: #2d6a4f;
+  color: #4ade80;
   margin: 0;
   text-align: left;
 }
@@ -555,17 +691,17 @@ nav {
 .features {
   padding: 5rem 4rem;
   text-align: center;
-  background: #f8f9ff;
+  background: var(--bg-primary);
 }
 
 .features h2 {
   font-size: 2rem;
-  color: #1a1a2e;
+  color: var(--text-primary);
   margin-bottom: 0.8rem;
 }
 
 .features-sub {
-  color: #555;
+  color: var(--text-secondary);
   font-size: 1rem;
   margin-bottom: 3rem;
   text-align: center;
@@ -578,33 +714,28 @@ nav {
 }
 
 .feature-card {
-  background: white;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-sm);
   text-align: left;
   transition: transform 0.2s;
+  border: 1px solid var(--border);
 }
 
 .feature-card:hover {
   transform: translateY(-4px);
 }
 
-.feature-icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 1rem;
-}
-
 .feature-card h3 {
   font-size: 1.1rem;
-  color: #1a1a2e;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .feature-card p {
   font-size: 0.9rem;
-  color: #555;
+  color: var(--text-secondary);
   line-height: 1.6;
   text-align: left;
   margin: 0;
@@ -613,17 +744,18 @@ nav {
 .cta {
   padding: 5rem 4rem;
   text-align: center;
-  background: #1a1a2e;
+  background: var(--accent);
   color: white;
 }
 
 .cta h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: white;
 }
 
 .cta p {
-  color: #a0aec0;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -632,12 +764,30 @@ nav {
 .landing-footer {
   padding: 2rem 4rem;
   text-align: center;
-  border-top: 1px solid #f0f2f5;
+  border-top: 1px solid var(--border);
+  background: var(--bg-secondary);
 }
 
 .landing-footer p {
-  color: #a0aec0;
+  color: var(--text-muted);
   font-size: 0.85rem;
   text-align: center;
   margin: 0;
+}
+
+.btn-ghost {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }

@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const useCountUp = (target, duration = 2000) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
 
-   useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -24,7 +25,7 @@ const useCountUp = (target, duration = 2000) => {
           setCount(0);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -32,7 +33,6 @@ const useCountUp = (target, duration = 2000) => {
 
   return { count, ref };
 };
-
 
 const HeroCard = ({ target, prefix = "", label, sub }) => {
   const { count, ref } = useCountUp(target);
@@ -54,6 +54,7 @@ const HeroCard = ({ target, prefix = "", label, sub }) => {
 
 const Landing = () => {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
   const features = [
     {
@@ -94,7 +95,23 @@ const Landing = () => {
       <nav className="landing-nav">
         <h1 className="landing-logo">Jewel Fleet</h1>
         <div className="landing-nav-links">
-          <button onClick={() => navigate("/login")}>Sign In</button>
+          <button
+            onClick={toggleTheme}
+            style={{
+              background: "none",
+              border: "1px solid var(--border)",
+              color: "var(--text-primary)",
+              padding: "0.4rem 0.8rem",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontSize: "0.85rem",
+            }}
+          >
+            {theme === "dark" ? "Light Mode" : "Dark Mode"}
+          </button>
+          <button className="btn-ghost" onClick={() => navigate("/login")}>
+            Sign In
+          </button>
           <button className="btn-primary" onClick={() => navigate("/register")}>
             Get Started
           </button>

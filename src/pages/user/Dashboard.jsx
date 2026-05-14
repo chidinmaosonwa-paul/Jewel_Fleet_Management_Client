@@ -1,22 +1,24 @@
-import { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import Journeys from './Journeys.jsx';
-import Tickets from './Tickets.jsx';
+import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from '../../context/ThemeContext';
+import Journeys from "./Journeys.jsx";
+import Tickets from "./Tickets.jsx";
 
 const UserDashboard = () => {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
-  const [activePage, setActivePage] = useState('journeys');
+  const [activePage, setActivePage] = useState("journeys");
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate("/login");
   };
 
   const menuItems = [
-    { key: 'journeys', label: 'Available Journeys' },
-    { key: 'tickets', label: 'My Tickets' },
+    { key: "journeys", label: "Available Journeys" },
+    { key: "tickets", label: "My Tickets" },
   ];
 
   return (
@@ -30,20 +32,23 @@ const UserDashboard = () => {
           {menuItems.map((item) => (
             <button
               key={item.key}
-              className={`nav-item ${activePage === item.key ? 'active' : ''}`}
+              className={`nav-item ${activePage === item.key ? "active" : ""}`}
               onClick={() => setActivePage(item.key)}
             >
               {item.label}
             </button>
           ))}
         </nav>
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {theme === "dark" ? "Light Mode" : "Dark Mode"}
+        </button>
         <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>
       </aside>
       <main className="main-content">
-        {activePage === 'journeys' && <Journeys />}
-        {activePage === 'tickets' && <Tickets />}
+        {activePage === "journeys" && <Journeys />}
+        {activePage === "tickets" && <Tickets />}
       </main>
     </div>
   );
