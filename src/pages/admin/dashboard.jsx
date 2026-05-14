@@ -8,6 +8,7 @@ import Tickets from './Tickets.jsx';
 import Reports from './Reports.jsx';
 import Financial from './Financial.jsx';
 import Drivers from './Drivers.jsx';
+import Overview from './Overview.jsx';
 
 const AdminDashboard = () => {
   const { user, logout } = useAuth();
@@ -53,12 +54,7 @@ const AdminDashboard = () => {
         </button>
       </aside>
       <main className="main-content">
-        {activePage === 'overview' && (
-          <div>
-            <h1>Overview</h1>
-            <p>Select a section from the sidebar to get started.</p>
-          </div>
-        )}
+        {activePage === 'overview' && <Overview />}
         {activePage === 'drivers' && <Drivers />}
         {activePage === 'vehicles' && <Vehicles />}
         {activePage === 'destinations' && <Destinations />}

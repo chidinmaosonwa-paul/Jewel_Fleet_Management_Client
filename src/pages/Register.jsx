@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import axiosInstance from '../api/axiosInstance';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import axiosInstance from "../api/axiosInstance";
 
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -22,16 +22,20 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      return setError('Passwords do not match');
+      return setError("Passwords do not match");
     }
     setLoading(true);
-    setError('');
+    setError("");
     try {
       const { confirmPassword, ...dataToSend } = formData;
-      await axiosInstance.post('/auth/register', dataToSend);
-      navigate('/login');
+      await axiosInstance.post("/auth/register", dataToSend);
+      navigate("/login");
     } catch (err) {
-      setError(err.response?.data?.message || err.response?.data?.error?.[0] || 'Registration failed');
+      setError(
+        err.response?.data?.message ||
+          err.response?.data?.error?.[0] ||
+          "Registration failed",
+      );
     } finally {
       setLoading(false);
     }
@@ -46,33 +50,79 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>First Name</label>
-            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter your first name" required />
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              placeholder="Enter your first name"
+              required
+            />
           </div>
           <div className="form-group">
             <label>Last Name</label>
-            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter your last name" required />
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder="Enter your last name"
+              required
+            />
           </div>
           <div className="form-group">
             <label>Email</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" required />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              required
+            />
           </div>
           <div className="form-group">
             <label>Phone Number</label>
-            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Enter your phone number" required />
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Enter your phone number"
+              pattern="[0-9+\-\s]+"
+              title="Phone number can only contain digits, +, - and spaces"
+              required
+            />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Enter your password" required />
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Enter your password"
+              required
+            />
           </div>
           <div className="form-group">
             <label>Confirm Password</label>
-            <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm your password" required />
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="Confirm your password"
+              required
+            />
           </div>
           <button type="submit" disabled={loading}>
-            {loading ? 'Creating account...' : 'Register'}
+            {loading ? "Creating account..." : "Register"}
           </button>
         </form>
-        <p>Already have an account? <Link to="/login">Sign In</Link></p>
+        <p>
+          Already have an account? <Link to="/login">Sign In</Link>
+        </p>
       </div>
     </div>
   );

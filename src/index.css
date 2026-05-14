@@ -369,3 +369,47 @@ nav {
   margin-bottom: 1rem;
   font-size: 0.9rem;
 }
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.overview-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border-left: 4px solid #4361ee;
+}
+
+.overview-card.green {
+  border-left-color: #2d6a4f;
+}
+
+.overview-card.red {
+  border-left-color: #c1121f;
+}
+
+.overview-card.blue {
+  border-left-color: #4361ee;
+}
+
+.overview-card p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+}
+
+.overview-card h2 {
+  font-size: 2rem;
+  color: #1a1a2e;
+  margin: 0 0 0.3rem 0;
+}
+
+.overview-card span {
+  font-size: 0.8rem;
+  color: #a0aec0;
+}

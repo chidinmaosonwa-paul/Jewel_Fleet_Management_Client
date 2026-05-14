@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import axiosInstance from '../../api/axiosInstance';
+import { useState } from "react";
+import axiosInstance from "../../api/axiosInstance";
 
 const Drivers = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    password: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
   });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -19,18 +19,30 @@ const Drivers = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setError("");
+    setSuccess("");
     setLoading(true);
     try {
-      await axiosInstance.post('/auth/register', {
+      await axiosInstance.post("/auth/register", {
         ...formData,
-        role: 'driver',
+        role: "driver",
       });
-      setSuccess(`Driver account created successfully for ${formData.firstName} ${formData.lastName}.`);
-      setFormData({ firstName: '', lastName: '', email: '', phone: '', password: '' });
+      setSuccess(
+        `Driver account created successfully for ${formData.firstName} ${formData.lastName}.`,
+      );
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        password: "",
+      });
     } catch (err) {
-      setError(err.response?.data?.message || err.response?.data?.error?.[0] || 'Failed to create driver account');
+      setError(
+        err.response?.data?.message ||
+          err.response?.data?.error?.[0] ||
+          "Failed to create driver account",
+      );
     } finally {
       setLoading(false);
     }
@@ -50,29 +62,66 @@ const Drivers = () => {
           <div className="form-row">
             <div className="form-group">
               <label>First Name</label>
-              <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter first name" required />
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                placeholder="Enter first name"
+                required
+              />
             </div>
             <div className="form-group">
               <label>Last Name</label>
-              <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter last name" required />
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                placeholder="Enter last name"
+                required
+              />
             </div>
           </div>
           <div className="form-row">
             <div className="form-group">
               <label>Email</label>
-              <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter email" required />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter email"
+                required
+              />
             </div>
             <div className="form-group">
               <label>Phone Number</label>
-              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Enter phone number" required />
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Enter phone number"
+                required
+              />
             </div>
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Enter password" required />
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Enter password"
+              pattern="[0-9+\-\s]+"
+              title="Phone number can only contain digits, +, - and spaces"
+              required
+            />
           </div>
           <button type="submit" className="btn-primary" disabled={loading}>
-            {loading ? 'Creating account...' : 'Create Driver Account'}
+            {loading ? "Creating account..." : "Create Driver Account"}
           </button>
         </form>
       </div>
