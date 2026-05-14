@@ -21,11 +21,21 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     if (formData.password !== formData.confirmPassword) {
       return setError("Passwords do not match");
     }
+    const phoneRegex = /^[0-9+\-\s]+$/;
+    if (!phoneRegex.test(formData.phone)) {
+      return setError("Phone number can only contain digits, +, - and spaces");
+    }
+    if (formData.phone.replace(/[^0-9]/g, "").length < 7) {
+      return setError("Phone number must be at least 7 digits");
+    }
+    if (formData.phone.replace(/[^0-9]/g, "").length > 15) {
+      return setError("Phone number must not exceed 15 digits");
+    }
     setLoading(true);
-    setError("");
     try {
       const { confirmPassword, ...dataToSend } = formData;
       await axiosInstance.post("/auth/register", dataToSend);
@@ -89,8 +99,6 @@ const Register = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Enter your phone number"
-              pattern="[0-9+\-\s]+"
-              title="Phone number can only contain digits, +, - and spaces"
               required
             />
           </div>
