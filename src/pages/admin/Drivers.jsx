@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axiosInstance from "../../api/axiosInstance";
-import { useState, useEffect } from 'react';
 
 const Drivers = () => {
   const [formData, setFormData] = useState({
