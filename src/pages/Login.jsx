@@ -3,9 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axiosInstance from "../api/axiosInstance";
 
-console.log("Login component loaded");
-console.log("axiosInstance:", axiosInstance);
-
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -69,6 +66,14 @@ const Login = () => {
               placeholder="Enter your password"
               required
             />
+            <div style={{ textAlign: "right", marginTop: "0.3rem" }}>
+              <Link
+                to="/forgot-password"
+                style={{ fontSize: "0.85rem", color: "var(--accent)" }}
+              >
+                Forgot Password?
+              </Link>
+            </div>
           </div>
           <button type="submit" disabled={loading}>
             {loading ? "Signing in..." : "Sign In"}
