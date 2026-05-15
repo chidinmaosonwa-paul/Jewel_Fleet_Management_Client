@@ -59,7 +59,7 @@ const Register = () => {
       <div className="auth-container">
         <div className="auth-card" style={{ textAlign: "center" }}>
           <h1>Jewel Fleet</h1>
-          <h2>Check Your Email</h2>
+          <h2>Registration Successful!</h2>
           <p style={{ color: "var(--text-secondary)", marginTop: "1rem" }}>
             We sent a verification link to <strong>{formData.email}</strong>.
             Please check your inbox and verify your email before signing in.
