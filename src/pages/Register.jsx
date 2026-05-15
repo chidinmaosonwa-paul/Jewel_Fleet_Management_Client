@@ -14,6 +14,9 @@ const Register = () => {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [registered, setRegistered] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,7 +24,6 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     if (formData.password !== formData.confirmPassword) {
       return setError("Passwords do not match");
     }
@@ -36,10 +38,11 @@ const Register = () => {
       return setError("Phone number must not exceed 15 digits");
     }
     setLoading(true);
+    setError("");
     try {
       const { confirmPassword, ...dataToSend } = formData;
       await axiosInstance.post("/auth/register", dataToSend);
-      navigate("/login");
+      setRegistered(true);
     } catch (err) {
       setError(
         err.response?.data?.message ||
@@ -51,34 +54,54 @@ const Register = () => {
     }
   };
 
+  if (registered) {
+    return (
+      <div className="auth-container">
+        <div className="auth-card" style={{ textAlign: "center" }}>
+          <h1>Jewel Fleet</h1>
+          <h2>Check Your Email</h2>
+          <p style={{ color: "var(--text-secondary)", marginTop: "1rem" }}>
+            We sent a verification link to <strong>{formData.email}</strong>.
+            Please check your inbox and verify your email before signing in.
+          </p>
+          <p style={{ marginTop: "1rem" }}>
+            <Link to="/login">Back to Sign In</Link>
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>Fleet Management</h1>
+        <h1>Jewel Fleet</h1>
         <h2>Create Account</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>First Name</label>
-            <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              placeholder="Enter your first name"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              placeholder="Enter your last name"
-              required
-            />
+          <div className="form-row">
+            <div className="form-group">
+              <label>First Name</label>
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                placeholder="Enter your first name"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Last Name</label>
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                placeholder="Enter your last name"
+                required
+              />
+            </div>
           </div>
           <div className="form-group">
             <label>Email</label>
@@ -104,25 +127,43 @@ const Register = () => {
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              required
-            />
+            <div className="input-with-icon">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter your password"
+                required
+              />
+              <button
+                type="button"
+                className="eye-btn"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
           </div>
           <div className="form-group">
             <label>Confirm Password</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="Confirm your password"
-              required
-            />
+            <div className="input-with-icon">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="Confirm your password"
+                required
+              />
+              <button
+                type="button"
+                className="eye-btn"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
           </div>
           <button type="submit" disabled={loading}>
             {loading ? "Creating account..." : "Register"}
