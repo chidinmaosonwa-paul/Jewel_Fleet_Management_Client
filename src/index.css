@@ -832,6 +832,10 @@ nav {
     font-size: 0.8rem;
   }
 
+  .footer-link-hide {
+    display: none;
+  }
+
   .footer-bottom {
     padding: 1rem 1.5rem;
   }

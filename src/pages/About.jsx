@@ -292,11 +292,14 @@ const About = () => {
             >
               Contact
             </button>
-            <button className="footer-link" onClick={() => navigate("/login")}>
+            <button
+              className="footer-link footer-link-hide"
+              onClick={() => navigate("/login")}
+            >
               Sign In
             </button>
             <button
-              className="footer-link"
+              className="footer-link footer-link-hide"
               onClick={() => navigate("/register")}
             >
               Get Started
@@ -304,9 +307,7 @@ const About = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p style={{ margin: 0 }}>
-            © 2026 Safaraa. Built with love in Lagos.
-          </p>
+          <p style={{ margin: 0 }}>© 2026 Safaraa. Built with love in Lagos.</p>
         </div>
       </footer>
     </div>
