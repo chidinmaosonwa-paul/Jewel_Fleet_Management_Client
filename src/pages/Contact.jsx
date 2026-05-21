@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
-const About = () => {
+const Contact = () => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="landing">
-      {/* Navbar */}
       <div className="landing-nav">
         <div
           className="landing-logo"
@@ -91,8 +90,8 @@ const About = () => {
           <button className="btn-ghost" onClick={() => navigate("/")}>
             Home
           </button>
-          <button className="btn-ghost" onClick={() => navigate("/contact")}>
-            Contact
+          <button className="btn-ghost" onClick={() => navigate("/about")}>
+            About
           </button>
           <button className="btn-ghost" onClick={() => navigate("/login")}>
             Sign In
@@ -103,7 +102,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Hero */}
       <section
         style={{
           padding: "5rem 4rem",
@@ -120,128 +118,151 @@ const About = () => {
             fontWeight: 900,
           }}
         >
-          About Safara
+          Get in Touch
         </h1>
         <p
           style={{
             fontSize: "1.1rem",
             color: "var(--text-secondary)",
-            maxWidth: "600px",
+            maxWidth: "500px",
             margin: "0 auto",
             lineHeight: 1.7,
           }}
         >
-          Safara is a complete fleet management platform built for travel
-          companies. We help businesses manage their vehicles, schedule
-          journeys, and give passengers a seamless booking experience, all in
-          one place.
+          Have a question or want to work together? Reach out through any of the
+          channels below.
         </p>
       </section>
 
-      {/* Story */}
-      <section style={{ padding: "4rem", background: "var(--bg-secondary)" }}>
-        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-          <h2
+      <section
+        style={{ padding: "3rem 4rem", background: "var(--bg-secondary)" }}
+      >
+        <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+          <a
+            href="mailto:jewelchidinma@gmail.com"
             style={{
-              fontSize: "1.8rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              padding: "1.5rem",
+              background: "var(--bg-card)",
+              borderRadius: "12px",
+              border: "1px solid var(--border)",
+              marginBottom: "1rem",
+              textDecoration: "none",
               color: "var(--text-primary)",
-              marginBottom: "1.5rem",
             }}
           >
-            The Story
-          </h2>
-          <p
-            style={{
-              color: "var(--text-secondary)",
-              lineHeight: 1.8,
-              marginBottom: "1rem",
-              textAlign: "left",
-            }}
-          >
-            Running a travel company is complex. Managing a fleet of vehicles,
-            coordinating drivers, tracking passenger bookings, and keeping
-            finances in order all at the same time, is no small feat.
-          </p>
-          <p
-            style={{
-              color: "var(--text-secondary)",
-              lineHeight: 1.8,
-              marginBottom: "1rem",
-              textAlign: "left",
-            }}
-          >
-            Safara was built to bring all of that together. One platform where
-            operators have complete visibility over their fleet, drivers stay
-            connected to their assignments, and passengers enjoy a smooth
-            booking experience from anywhere.
-          </p>
-          <p
-            style={{
-              color: "var(--text-secondary)",
-              lineHeight: 1.8,
-              textAlign: "left",
-            }}
-          >
-            The name Safara means travel. Everything we build starts and ends
-            with that idea.
-          </p>
-        </div>
-      </section>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--accent)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <div>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "0.8rem",
+                  color: "var(--text-muted)",
+                  textAlign: "left",
+                }}
+              >
+                Email
+              </p>
+              <span style={{ fontWeight: 500 }}>jewelchidinma@gmail.com</span>
+            </div>
+          </a>
 
-      {/* Values */}
-      <section style={{ padding: "4rem", background: "var(--bg-primary)" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <h2
+          <div
             style={{
-              fontSize: "1.8rem",
-              color: "var(--text-primary)",
-              marginBottom: "2rem",
-              textAlign: "center",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1rem",
             }}
           >
-            What We Stand For
-          </h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <h3>Simplicity</h3>
-              <p>
-                Complex operations should have simple interfaces. Every feature
-                in Safara is designed to be intuitive from day one.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>Reliability</h3>
-              <p>
-                Travel companies depend on us to keep their operations running.
-                We take that responsibility seriously.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>Transparency</h3>
-              <p>
-                Every transaction, every journey, every report; fully tracked
-                and available to the people who need it.
-              </p>
-            </div>
+            <a
+              href="https://www.linkedin.com/in/chidinma-osonwa-paul"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-social-card"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="var(--accent)"
+              >
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/chidinmaosonwa-paul"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-social-card"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="var(--accent)"
+              >
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+              GitHub
+            </a>
+            <a
+              href="https://twitter.com/jewelchidinma"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-social-card"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="var(--accent)"
+              >
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              Twitter / X
+            </a>
+            <a
+              href="https://tiktok.com/@jewelwrites.code"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-social-card"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="var(--accent)"
+              >
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z" />
+              </svg>
+              TikTok
+            </a>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta">
-        <h2>Ready to get started?</h2>
-        <p>
-          Join travel companies already using Safara to run their operations.
-        </p>
-        <button
-          className="btn-primary btn-large"
-          onClick={() => navigate("/register")}
-        >
-          Get Started for Free
-        </button>
-      </section>
-
-      {/* Footer */}
       <footer className="landing-footer">
         <div className="footer-content">
           <div className="footer-brand">
@@ -313,4 +334,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Contact;

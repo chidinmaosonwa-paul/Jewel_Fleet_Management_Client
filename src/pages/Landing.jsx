@@ -171,6 +171,9 @@ const Landing = () => {
           <button className="btn-ghost" onClick={() => navigate("/about")}>
             About
           </button>
+          <button className="btn-ghost" onClick={() => navigate("/contact")}>
+            Contact
+          </button>
           <button className="btn-ghost" onClick={() => navigate("/login")}>
             Sign In
           </button>
@@ -254,7 +257,71 @@ const Landing = () => {
 
       {/* Footer */}
       <footer className="landing-footer">
-        <p>© 2026 Safara. Built with love from Lagos.</p>
+        <div className="footer-content">
+          <div className="footer-brand">
+            <div className="landing-logo" style={{ marginBottom: "0.5rem" }}>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="6" cy="26" r="4" fill="var(--accent)" />
+                <circle
+                  cx="26"
+                  cy="6"
+                  r="4"
+                  fill="var(--accent)"
+                  opacity="0.5"
+                />
+                <path
+                  d="M6 26 C6 14 26 18 26 6"
+                  stroke="var(--accent)"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </svg>
+              Safara
+            </div>
+            <p
+              style={{
+                margin: 0,
+                fontSize: "0.85rem",
+                color: "var(--text-muted)",
+                textAlign: "left",
+              }}
+            >
+              A complete fleet management platform for travel companies.
+            </p>
+          </div>
+          <div className="footer-links">
+            <button className="footer-link" onClick={() => navigate("/about")}>
+              About
+            </button>
+            <button
+              className="footer-link"
+              onClick={() => navigate("/contact")}
+            >
+              Contact
+            </button>
+            <button className="footer-link" onClick={() => navigate("/login")}>
+              Sign In
+            </button>
+            <button
+              className="footer-link"
+              onClick={() => navigate("/register")}
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p style={{ margin: 0 }}>
+            © 2026 Safara. Built with love in Lagos.
+          </p>
+        </div>
       </footer>
     </div>
   );
