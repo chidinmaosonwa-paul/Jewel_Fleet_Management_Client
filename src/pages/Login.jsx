@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>Fleet Management</h1>
+        <h1>Safara</h1>
         <h2>Sign In</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>

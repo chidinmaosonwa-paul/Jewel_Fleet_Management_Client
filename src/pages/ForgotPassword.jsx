@@ -26,7 +26,7 @@ const ForgotPassword = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>Jewel Fleet</h1>
+        <h1>Safara</h1>
         <h2>Forgot Password</h2>
         <p style={{ textAlign: 'left', marginTop: 0, marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>
           Enter your email and we'll send you a link to reset your password.

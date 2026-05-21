@@ -92,8 +92,27 @@ const Landing = () => {
   return (
     <div className="landing">
       {/* Navbar */}
-      <nav className="landing-nav">
-        <h1 className="landing-logo">Jewel Fleet</h1>
+      <div className="landing-nav">
+        <div className="landing-logo">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="6" cy="26" r="4" fill="var(--accent)" />
+            <circle cx="26" cy="6" r="4" fill="var(--accent)" opacity="0.5" />
+            <path
+              d="M6 26 C6 14 26 18 26 6"
+              stroke="var(--accent)"
+              strokeWidth="4"
+              strokeLinecap="round"
+              fill="none"
+            />
+          </svg>
+          Safara
+        </div>
         <div className="landing-nav-links">
           <button
             onClick={toggleTheme}
@@ -101,13 +120,56 @@ const Landing = () => {
               background: "none",
               border: "1px solid var(--border)",
               color: "var(--text-primary)",
-              padding: "0.4rem 0.8rem",
+              padding: "0.5rem",
               borderRadius: "8px",
               cursor: "pointer",
-              fontSize: "0.85rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "36px",
+              height: "36px",
             }}
           >
-            {theme === "dark" ? "Light Mode" : "Dark Mode"}
+            {theme === "dark" ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
+          <button className="btn-ghost" onClick={() => navigate("/about")}>
+            About
           </button>
           <button className="btn-ghost" onClick={() => navigate("/login")}>
             Sign In
@@ -116,7 +178,7 @@ const Landing = () => {
             Get Started
           </button>
         </div>
-      </nav>
+      </div>
 
       {/* Hero */}
       <section className="hero">
@@ -179,7 +241,7 @@ const Landing = () => {
       <section className="cta">
         <h2>Ready to manage your fleet smarter?</h2>
         <p>
-          Join travel companies already using Jewel Fleet to streamline their
+          Join travel companies already using Safara to streamline their
           operations.
         </p>
         <button
@@ -192,7 +254,7 @@ const Landing = () => {
 
       {/* Footer */}
       <footer className="landing-footer">
-        <p>© 2026 Jewel Fleet. Built with love from Lagos.</p>
+        <p>© 2026 Safara. Built with love from Lagos.</p>
       </footer>
     </div>
   );

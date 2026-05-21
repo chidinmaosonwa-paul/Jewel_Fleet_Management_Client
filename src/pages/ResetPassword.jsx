@@ -74,7 +74,7 @@ const ResetPassword = () => {
     return (
       <div className="auth-container">
         <div className="auth-card">
-          <h1>Jewel Fleet</h1>
+          <h1>Safara</h1>
           <h2>Invalid Link</h2>
           <p>This password reset link is invalid or has expired.</p>
           <p>
@@ -88,7 +88,7 @@ const ResetPassword = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>Jewel Fleet</h1>
+        <h1>Safara</h1>
         <h2>Reset Password</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>

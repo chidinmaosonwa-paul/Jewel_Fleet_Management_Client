@@ -580,7 +580,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 4rem;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 1.2rem 2rem;
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -589,28 +591,20 @@ nav {
 }
 
 .landing-logo {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: var(--accent);
-  font-weight: 700;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .landing-nav-links {
   display: flex;
   gap: 1rem;
   align-items: center;
-}
-
-.landing-nav-links button:first-child {
-  background: none;
-  border: none;
-  color: var(--text-primary);
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.landing-nav-links button:first-child:hover {
-  color: var(--accent);
 }
 
 .hero {
@@ -1000,4 +994,18 @@ nav {
 
 .eye-btn:hover {
   color: var(--text-primary);
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-logo h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin: 0;
 }

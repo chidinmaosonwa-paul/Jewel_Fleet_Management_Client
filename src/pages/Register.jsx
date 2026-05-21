@@ -58,7 +58,7 @@ const Register = () => {
     return (
       <div className="auth-container">
         <div className="auth-card" style={{ textAlign: "center" }}>
-          <h1>Jewel Fleet</h1>
+          <h1>Safara</h1>
           <h2>Registration Successful!</h2>
           <p style={{ color: "var(--text-secondary)", marginTop: "1rem" }}>
             We sent a verification link to <strong>{formData.email}</strong>.
@@ -75,7 +75,7 @@ const Register = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>Jewel Fleet</h1>
+        <h1>Safara</h1>
         <h2>Create Account</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>

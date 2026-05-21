@@ -29,7 +29,7 @@ const VerifyEmail = () => {
   return (
     <div className="auth-container">
       <div className="auth-card" style={{ textAlign: 'center' }}>
-        <h1>Jewel Fleet</h1>
+        <h1>Safara</h1>
         {status === 'verifying' && <p>Verifying your email...</p>}
         {status === 'success' && (
           <>

@@ -10,6 +10,7 @@ import UserDashboard from "./pages/user/Dashboard.jsx";
 import DriverDashboard from "./pages/driver/Dashboard.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Landing from "./pages/Landing.jsx";
+import About from './pages/About.jsx';
 
 const ProtectedRoute = ({ children, role }) => {
   const { token, user } = useAuth();
@@ -27,6 +28,7 @@ const App = () => {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/verify-email" element={<VerifyEmail />} />
+      <Route path="/about" element={<About />} />
       <Route
         path="/admin/*"
         element={
