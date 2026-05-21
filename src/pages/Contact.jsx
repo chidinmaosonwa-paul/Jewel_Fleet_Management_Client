@@ -326,7 +326,7 @@ const Contact = () => {
         </div>
         <div className="footer-bottom">
           <p style={{ margin: 0 }}>
-            © 2026 Safara. Built with love in Lagos.
+            © 2026 Safaraa. Built with love in Lagos.
           </p>
         </div>
       </footer>

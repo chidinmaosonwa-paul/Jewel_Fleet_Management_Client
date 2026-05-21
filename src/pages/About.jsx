@@ -131,7 +131,7 @@ const About = () => {
             lineHeight: 1.7,
           }}
         >
-          Safara is a complete fleet management platform built for travel
+          Safaraa is a complete fleet management platform built for travel
           companies. We help businesses manage their vehicles, schedule
           journeys, and give passengers a seamless booking experience, all in
           one place.
@@ -170,7 +170,7 @@ const About = () => {
               textAlign: "left",
             }}
           >
-            Safara was built to bring all of that together. One platform where
+            Safaraa was built to bring all of that together. One platform where
             operators have complete visibility over their fleet, drivers stay
             connected to their assignments, and passengers enjoy a smooth
             booking experience from anywhere.
@@ -182,7 +182,7 @@ const About = () => {
               textAlign: "left",
             }}
           >
-            The name Safara means travel. Everything we build starts and ends
+            The name Safaraa means travel. Everything we build starts and ends
             with that idea.
           </p>
         </div>
@@ -206,7 +206,7 @@ const About = () => {
               <h3>Simplicity</h3>
               <p>
                 Complex operations should have simple interfaces. Every feature
-                in Safara is designed to be intuitive from day one.
+                in Safaraa is designed to be intuitive from day one.
               </p>
             </div>
             <div className="feature-card">
@@ -231,7 +231,7 @@ const About = () => {
       <section className="cta">
         <h2>Ready to get started?</h2>
         <p>
-          Join travel companies already using Safara to run their operations.
+          Join travel companies already using Safaraa to run their operations.
         </p>
         <button
           className="btn-primary btn-large"
@@ -305,7 +305,7 @@ const About = () => {
         </div>
         <div className="footer-bottom">
           <p style={{ margin: 0 }}>
-            © 2026 Safara. Built with love in Lagos.
+            © 2026 Safaraa. Built with love in Lagos.
           </p>
         </div>
       </footer>

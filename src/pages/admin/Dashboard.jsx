@@ -68,7 +68,7 @@ const AdminDashboard = () => {
               fill="none"
             />
           </svg>
-          <h2>Safara</h2>
+          <h2>Safaraa</h2>
         </div>
       </div>
 
@@ -99,7 +99,7 @@ const AdminDashboard = () => {
                 fill="none"
               />
             </svg>
-            <h2>Safara</h2>
+            <h2>Safaraa</h2>
           </div>
           <p>Welcome, {user?.firstName}</p>
         </div>

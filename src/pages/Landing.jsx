@@ -244,7 +244,7 @@ const Landing = () => {
       <section className="cta">
         <h2>Ready to manage your fleet smarter?</h2>
         <p>
-          Join travel companies already using Safara to streamline their
+          Join travel companies already using Safaraa to streamline their
           operations.
         </p>
         <button
@@ -283,7 +283,7 @@ const Landing = () => {
                   fill="none"
                 />
               </svg>
-              Safara
+              Safaraa
             </div>
             <p
               style={{
@@ -319,7 +319,7 @@ const Landing = () => {
         </div>
         <div className="footer-bottom">
           <p style={{ margin: 0 }}>
-            © 2026 Safara. Built with love in Lagos.
+            © 2026 Safaraa. Built with love in Lagos.
           </p>
         </div>
       </footer>
