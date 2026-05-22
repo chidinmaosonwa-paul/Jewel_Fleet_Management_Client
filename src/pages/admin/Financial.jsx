@@ -11,12 +11,17 @@ const Financial = () => {
     startDate: "",
     endDate: "",
   });
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const fetchTransactions = async () => {
+  const fetchTransactions = async (currentPage = 1) => {
     setError("");
     try {
-      const res = await axiosInstance.get("/financial/transactions");
-      setTransactions(res.data);
+      const res = await axiosInstance.get(
+        `/financial/transactions?page=${currentPage}&limit=10`,
+      );
+      setTransactions(res.data.data);
+      setTotalPages(res.data.pagination.totalPages);
     } catch {
       setError("Failed to load transactions");
     } finally {
@@ -25,8 +30,8 @@ const Financial = () => {
   };
 
   useEffect(() => {
-    fetchTransactions();
-  }, []);
+    fetchTransactions(page);
+  }, [page]);
 
   const handleDateChange = (e) => {
     setDateRange({ ...dateRange, [e.target.name]: e.target.value });
@@ -164,6 +169,28 @@ const Financial = () => {
             ))}
           </tbody>
         </table>
+      )}
+
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+          <span style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+            Page {page} of {totalPages}
+          </span>
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+            disabled={page === totalPages}
+          >
+            Next
+          </button>
+        </div>
       )}
     </div>
   );

@@ -6,12 +6,17 @@ const Users = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const fetchUsers = async () => {
+  const fetchUsers = async (currentPage = 1) => {
     setError("");
     try {
-      const res = await axiosInstance.get("/auth/users");
-      setUsers(res.data);
+      const res = await axiosInstance.get(
+        `/auth/users?page=${currentPage}&limit=10`,
+      );
+      setUsers(res.data.data);
+      setTotalPages(res.data.pagination.totalPages);
     } catch {
       setError("Failed to load users");
     } finally {
@@ -20,8 +25,8 @@ const Users = () => {
   };
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    fetchUsers(page);
+  }, [page]);
 
   const handleRoleUpdate = async (id, role) => {
     setError("");
@@ -81,6 +86,28 @@ const Users = () => {
             ))}
           </tbody>
         </table>
+      )}
+
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+          <span style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+            Page {page} of {totalPages}
+          </span>
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+            disabled={page === totalPages}
+          >
+            Next
+          </button>
+        </div>
       )}
     </div>
   );

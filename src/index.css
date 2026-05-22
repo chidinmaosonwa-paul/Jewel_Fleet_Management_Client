@@ -1100,3 +1100,12 @@ nav {
   letter-spacing: -0.03em;
   margin-bottom: 0.3rem;
 }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem 0;
+}

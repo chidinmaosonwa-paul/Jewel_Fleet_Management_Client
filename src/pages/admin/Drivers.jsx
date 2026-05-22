@@ -13,17 +13,24 @@ const Drivers = () => {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [drivers, setDrivers] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-   const fetchDrivers = async () => {
+  const fetchDrivers = async (currentPage = 1) => {
     try {
-      const res = await axiosInstance.get('/auth/drivers');
-      setDrivers(res.data);
+      const res = await axiosInstance.get(
+        `/auth/drivers?page=${currentPage}&limit=10`,
+      );
+      setDrivers(res.data.data);
+      setTotalPages(res.data.pagination.totalPages);
     } catch {
-      setError('Failed to load drivers');
+      setError("Failed to load drivers");
     }
   };
 
-  useEffect(() => { fetchDrivers(); }, []);
+  useEffect(() => {
+    fetchDrivers(page);
+  }, [page]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -146,10 +153,10 @@ const Drivers = () => {
         </form>
       </div>
 
-       {drivers.length === 0 ? (
-        <p style={{ marginTop: '1.5rem' }}>No drivers found.</p>
+      {drivers.length === 0 ? (
+        <p style={{ marginTop: "1.5rem" }}>No drivers found.</p>
       ) : (
-        <table className="data-table" style={{ marginTop: '1.5rem' }}>
+        <table className="data-table" style={{ marginTop: "1.5rem" }}>
           <thead>
             <tr>
               <th>First Name</th>
@@ -169,6 +176,28 @@ const Drivers = () => {
             ))}
           </tbody>
         </table>
+      )}
+
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+          <span style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+            Page {page} of {totalPages}
+          </span>
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+            disabled={page === totalPages}
+          >
+            Next
+          </button>
+        </div>
       )}
     </div>
   );
