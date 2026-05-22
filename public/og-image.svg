@@ -1,0 +1,44 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0f2c"/>
+  
+  <!-- Accent gradient overlay -->
+  <rect x="0" y="0" width="600" height="630" fill="url(#grad)" opacity="0.15"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e88e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0f2c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Logo icon - positioned at top left -->
+  <circle cx="120" cy="175" r="14" fill="#1e88e5"/>
+  <circle cx="175" cy="110" r="14" fill="#1e88e5" opacity="0.5"/>
+  <path d="M120 175 C120 130 175 145 175 110" stroke="#1e88e5" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Logo text - positioned after icon -->
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="68" font-weight="900" fill="#1e88e5" letter-spacing="-2">Safaraa</text>
+
+  <!-- Tagline -->
+  <text x="120" y="290" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff">Smarter journeys,</text>
+  <text x="120" y="350" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff">seamless booking.</text>
+
+  <!-- Description -->
+  <text x="120" y="430" font-family="Arial, sans-serif" font-size="24" fill="#a0aec0">A complete fleet management platform for travel companies.</text>
+
+  <!-- URL -->
+  <text x="120" y="560" font-family="Arial, sans-serif" font-size="22" fill="#1e88e5">safaraa.vercel.app</text>
+
+  <!-- Decorative right side elements -->
+  <rect x="750" y="100" width="320" height="120" rx="16" fill="#131b4d" stroke="#1e2d6b" stroke-width="1"/>
+  <text x="780" y="145" font-family="Arial, sans-serif" font-size="14" fill="#6b7db3">TOTAL REVENUE</text>
+  <text x="780" y="195" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#ffffff">₦2.5M</text>
+
+  <rect x="750" y="250" width="320" height="120" rx="16" fill="#131b4d" stroke="#1e2d6b" stroke-width="1"/>
+  <text x="780" y="295" font-family="Arial, sans-serif" font-size="14" fill="#6b7db3">ACTIVE JOURNEYS</text>
+  <text x="780" y="345" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#ffffff">24</text>
+
+  <rect x="750" y="400" width="320" height="120" rx="16" fill="#131b4d" stroke="#1e2d6b" stroke-width="1"/>
+  <text x="780" y="445" font-family="Arial, sans-serif" font-size="14" fill="#6b7db3">TICKETS BOOKED</text>
+  <text x="780" y="495" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#ffffff">1,284</text>
+</svg>
