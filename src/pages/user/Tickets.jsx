@@ -6,13 +6,18 @@ const Tickets = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const fetchTickets = async () => {
+  const fetchTickets = async (currentPage = 1) => {
     setError("");
     setSuccess("");
     try {
-      const res = await axiosInstance.get("/tickets");
-      setTickets(res.data);
+      const res = await axiosInstance.get(
+        `/tickets?page=${currentPage}&limit=10`,
+      );
+      setTickets(res.data.data);
+      setTotalPages(res.data.pagination.totalPages);
     } catch {
       setError("Failed to load tickets");
     } finally {
@@ -21,8 +26,8 @@ const Tickets = () => {
   };
 
   useEffect(() => {
-    fetchTickets();
-  }, []);
+    fetchTickets(page);
+  }, [page]);
 
   const handleCancel = async (id) => {
     if (!window.confirm("Are you sure you want to cancel this ticket?")) return;
@@ -100,6 +105,28 @@ const Tickets = () => {
             ))}
           </tbody>
         </table>
+      )}
+
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+          <span style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+            Page {page} of {totalPages}
+          </span>
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+            disabled={page === totalPages}
+          >
+            Next
+          </button>
+        </div>
       )}
     </div>
   );

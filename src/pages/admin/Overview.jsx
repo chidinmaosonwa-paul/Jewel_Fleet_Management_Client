@@ -11,12 +11,18 @@ const Overview = () => {
     try {
       const [vehicles, destinations, journeys, tickets, transactions] =
         await Promise.all([
-          axiosInstance.get("/fleet"),
-          axiosInstance.get("/destinations"),
-          axiosInstance.get("/journeys"),
-          axiosInstance.get("/tickets"),
-          axiosInstance.get("/financial/transactions"),
+          axiosInstance.get("/fleet?page=1&limit=1000"),
+          axiosInstance.get("/destinations?page=1&limit=1000"),
+          axiosInstance.get("/journeys?page=1&limit=1000"),
+          axiosInstance.get("/tickets?page=1&limit=1000"),
+          axiosInstance.get("/financial/transactions?page=1&limit=1000"),
         ]);
+
+      const vehiclesData = vehicles.data.data;
+      const destinationsData = destinations.data.data;
+      const journeysData = journeys.data.data;
+      const ticketsData = tickets.data.data;
+      const transactionsData = transactions.data.data;
 
       const totalRevenue = transactions.data
         .filter((t) => t.type === "purchase")
@@ -27,15 +33,15 @@ const Overview = () => {
         .reduce((sum, t) => sum + t.amount, 0);
 
       setStats({
-        vehicles: vehicles.data.length,
-        activeVehicles: vehicles.data.filter((v) => v.status === "active")
+        vehicles: vehiclesData.length,
+        activeVehicles: vehiclesData.filter((v) => v.status === "active")
           .length,
-        destinations: destinations.data.length,
-        journeys: journeys.data.length,
-        scheduledJourneys: journeys.data.filter((j) => j.status === "scheduled")
+        destinations: destinationsData.length,
+        journeys: journeysData.length,
+        scheduledJourneys: journeysData.filter((j) => j.status === "scheduled")
           .length,
-        tickets: tickets.data.length,
-        bookedTickets: tickets.data.filter((t) => t.status === "booked").length,
+        tickets: ticketsData.length,
+        bookedTickets: ticketsData.filter((t) => t.status === "booked").length,
         totalRevenue,
         totalRefunds,
         netProfit: totalRevenue - totalRefunds,

@@ -15,13 +15,18 @@ const Journeys = () => {
     nextOfKinPhone: "",
     nextOfKinRelationship: "",
   });
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const fetchJourneys = async () => {
+  const fetchJourneys = async (currentPage = 1) => {
     setError("");
     setSuccess("");
     try {
-      const res = await axiosInstance.get("/journeys");
-      setJourneys(res.data.filter((j) => j.status === "scheduled"));
+      const res = await axiosInstance.get(
+        `/journeys?page=${currentPage}&limit=10`,
+      );
+      setJourneys(res.data.data.filter((j) => j.status === "scheduled"));
+      setTotalPages(res.data.pagination.totalPages);
     } catch {
       setError("Failed to load journeys");
     } finally {
@@ -30,8 +35,8 @@ const Journeys = () => {
   };
 
   useEffect(() => {
-    fetchJourneys();
-  }, []);
+    fetchJourneys(page);
+  }, [page]);
 
   const handleChange = (e) => {
     setPassengerDetails({
@@ -219,6 +224,28 @@ const Journeys = () => {
             ))}
           </tbody>
         </table>
+      )}
+
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+          <span style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+            Page {page} of {totalPages}
+          </span>
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+            disabled={page === totalPages}
+          >
+            Next
+          </button>
+        </div>
       )}
     </div>
   );

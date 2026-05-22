@@ -15,19 +15,22 @@ const Reports = () => {
     issuesReported: "",
     passengerFeedback: "",
   });
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const fetchAll = async () => {
+  const fetchAll = async (currentPage = 1) => {
     setError("");
     setSuccess("");
     try {
       const [reportsRes, journeysRes] = await Promise.all([
-        axiosInstance.get("/reports"),
-        axiosInstance.get("/journeys"),
+        axiosInstance.get(`/reports?page=${currentPage}&limit=10`),
+        axiosInstance.get(`/journeys?page=1&limit=1000`),
       ]);
-      setReports(reportsRes.data);
-      // Drivers only see completed and in_progress journeys
+      setReports(reportsRes.data.data);
+      setTotalPages(reportsRes.data.pagination.totalPages);
+      //Drivers only see completed and in_progress journeys
       setJourneys(
-        journeysRes.data.filter((j) =>
+        journeysRes.data.data.filter((j) =>
           ["in_progress", "completed"].includes(j.status),
         ),
       );
@@ -39,8 +42,8 @@ const Reports = () => {
   };
 
   useEffect(() => {
-    fetchAll();
-  }, []);
+    fetchAll(page);
+  }, [page]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -218,6 +221,28 @@ const Reports = () => {
             ))}
           </tbody>
         </table>
+      )}
+
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+          <span style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+            Page {page} of {totalPages}
+          </span>
+          <button
+            className="btn-ghost"
+            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+            disabled={page === totalPages}
+          >
+            Next
+          </button>
+        </div>
       )}
     </div>
   );
