@@ -34,6 +34,9 @@ const Financial = () => {
 
   const handleGenerateReport = async (e) => {
     e.preventDefault();
+    if (new Date(dateRange.endDate) < new Date(dateRange.startDate)) {
+      return setError("End date cannot be before start date");
+    }
     setReportLoading(true);
     setError("");
     try {
@@ -76,6 +79,7 @@ const Financial = () => {
                 name="startDate"
                 value={dateRange.startDate}
                 onChange={handleDateChange}
+                max={dateRange.endDate || undefined}
                 required
               />
             </div>
@@ -86,6 +90,7 @@ const Financial = () => {
                 name="endDate"
                 value={dateRange.endDate}
                 onChange={handleDateChange}
+                max={dateRange.startDate || undefined}
                 required
               />
             </div>

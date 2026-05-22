@@ -42,7 +42,30 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>Safara</h1>
+        <div
+          className="auth-logo"
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer", marginBottom: "0.5rem" }}
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="6" cy="26" r="4" fill="var(--accent)" />
+            <circle cx="26" cy="6" r="4" fill="var(--accent)" opacity="0.5" />
+            <path
+              d="M6 26 C6 14 26 18 26 6"
+              stroke="var(--accent)"
+              strokeWidth="4"
+              strokeLinecap="round"
+              fill="none"
+            />
+          </svg>
+          Safaraa
+        </div>
         <h2>Sign In</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>

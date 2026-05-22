@@ -1088,3 +1088,15 @@ nav {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--accent);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.3rem;
+}
