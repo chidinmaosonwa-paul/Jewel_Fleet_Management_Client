@@ -30,8 +30,8 @@ const AdminDashboard = () => {
   };
 
   const menuItems = [
-    { key: "drivers", label: "Drivers" },
     { key: "overview", label: "Overview" },
+    { key: "drivers", label: "Drivers" },
     { key: "vehicles", label: "Vehicles" },
     { key: "destinations", label: "Destinations" },
     { key: "journeys", label: "Journeys" },
