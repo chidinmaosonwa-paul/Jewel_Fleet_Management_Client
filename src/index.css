@@ -228,7 +228,7 @@ p a:hover {
 }
 
 .sidebar-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .sidebar-header h2 {
@@ -256,7 +256,7 @@ nav {
   border: none;
   color: #a0aec0;
   text-align: left;
-  padding: 0.7rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
@@ -283,7 +283,7 @@ nav {
   font-size: 0.9rem;
   text-align: left;
   transition: all 0.2s;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .logout-btn:hover {
@@ -849,7 +849,7 @@ nav {
   }
 
   nav {
-    flex: 0 0 auto;
+    flex: 1;
   }
 
   .topbar-btn {
@@ -948,7 +948,6 @@ nav {
     z-index: 1000;
     width: 250px;
     overflow-y: auto;
-    justify-content: space-between;
   }
 
   .sidebar.open {
