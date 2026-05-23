@@ -850,7 +850,6 @@ nav {
 
   nav {
     flex: 0 0 auto;
-    overflow-y: auto;
   }
 
   .topbar-btn {
@@ -949,6 +948,7 @@ nav {
     z-index: 1000;
     width: 250px;
     overflow-y: auto;
+    justify-content: space-between;
   }
 
   .sidebar.open {
