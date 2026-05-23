@@ -63,9 +63,6 @@ const UserDashboard = () => {
       )}
 
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-        <button className="sidebar-close" onClick={() => setSidebarOpen(false)}>
-          ✕
-        </button>
         <div className="sidebar-header">
           <div className="sidebar-logo">
             <svg
@@ -88,6 +85,12 @@ const UserDashboard = () => {
             <h2>Safaraa</h2>
           </div>
           <p>Welcome, {user?.firstName}</p>
+          <button
+            className="sidebar-close"
+            onClick={() => setSidebarOpen(false)}
+          >
+            ✕
+          </button>
         </div>
         <nav>
           {menuItems.map((item) => (

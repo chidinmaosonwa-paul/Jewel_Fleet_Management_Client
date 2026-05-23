@@ -882,8 +882,12 @@ nav {
   }
 
   .sidebar .sidebar-header {
-  padding-top: 2.5rem;
-}
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0;
+  }
 
   /* Hero */
   .hero {
