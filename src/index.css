@@ -223,6 +223,7 @@ p a:hover {
   flex-direction: column;
   padding: 1.5rem 1rem;
   position: fixed;
+  top: 0;
   height: 100vh;
   border-right: 1px solid var(--border);
 }
@@ -868,16 +869,21 @@ nav {
   }
 
   .sidebar-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     display: flex;
-    align-self: flex-end;
     background: none;
     border: none;
     color: #a0aec0;
     font-size: 1.2rem;
     cursor: pointer;
     padding: 0.3rem;
-    margin-bottom: 1rem;
   }
+
+  .sidebar .sidebar-header {
+  padding-top: 2.5rem;
+}
 
   /* Hero */
   .hero {
@@ -948,6 +954,10 @@ nav {
     z-index: 1000;
     width: 250px;
     overflow-y: auto;
+    top: 0;
+    height: 100dvh;
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    position: fixed;
   }
 
   .sidebar.open {
