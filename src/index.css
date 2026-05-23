@@ -940,6 +940,7 @@ nav {
     transition: transform 0.3s ease;
     z-index: 1000;
     width: 250px;
+    overflow-y: auto;
   }
 
   .sidebar.open {
@@ -1096,7 +1097,7 @@ nav {
   font-size: 1.4rem;
   font-weight: 900;
   color: var(--accent);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   letter-spacing: -0.03em;
   margin-bottom: 0.3rem;
 }
@@ -1114,14 +1115,14 @@ nav {
   background: none;
   border: 1px solid var(--border);
   color: #a0aec0;
-  padding: 0.5rem;
+  padding: 0.7rem 1rem;
   border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  gap: 0.5rem;
+  width: 100%;
   margin-bottom: 0.5rem;
   transition: all 0.2s;
 }

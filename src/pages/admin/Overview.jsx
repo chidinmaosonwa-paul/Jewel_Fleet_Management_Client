@@ -24,11 +24,11 @@ const Overview = () => {
       const ticketsData = tickets.data.data;
       const transactionsData = transactions.data.data;
 
-      const totalRevenue = transactions.data
+      const totalRevenue = transactionsData
         .filter((t) => t.type === "purchase")
         .reduce((sum, t) => sum + t.amount, 0);
 
-      const totalRefunds = transactions.data
+      const totalRefunds = transactionsData
         .filter((t) => t.type === "refund")
         .reduce((sum, t) => sum + t.amount, 0);
 
