@@ -18,7 +18,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
     try {
       const res = await axiosInstance.post("/auth/login", formData);
       const { token } = res.data;

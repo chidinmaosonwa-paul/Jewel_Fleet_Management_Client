@@ -840,6 +840,19 @@ nav {
     padding: 1rem 1.5rem;
   }
 
+  .card-form {
+    padding: 1rem;
+  }
+
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    flex: 0 0 auto;
+    overflow-y: auto;
+  }
+
   .topbar-btn {
     background: var(--accent);
     border: none;
@@ -899,11 +912,6 @@ nav {
   /* CTA */
   .cta {
     padding: 3rem 1.5rem;
-  }
-
-  /* Overview */
-  .overview-grid {
-    grid-template-columns: 1fr 1fr;
   }
 
   /* Report summary */
