@@ -889,6 +889,10 @@ nav {
     padding-top: 0;
   }
 
+  .sidebar .sidebar-header p {
+  width: 100%;
+}
+
   /* Hero */
   .hero {
     flex-direction: column;
