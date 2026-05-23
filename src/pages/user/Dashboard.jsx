@@ -54,7 +54,7 @@ const UserDashboard = () => {
               fill="none"
             />
           </svg>
-          <h2>Safara</h2>
+          <h2>Safaraa</h2>
         </div>
       </div>
 
